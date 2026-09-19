@@ -1,5 +1,5 @@
 import React from 'react';
-import { BookOpen, Sparkles, Target } from 'lucide-react';
+import { BookOpen, GraduationCap, Heart } from 'lucide-react';
 import { ProfileData } from '../types/portfolio';
 import { AnnotationBadge } from './AnnotationBadge';
 
@@ -12,18 +12,20 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
   profile,
   isThinkingMode,
 }) => {
-  const capabilitiesAnnotation = {
+  const aboutAnnotation = {
     id: "about-philosophy-note",
     category: "observation" as const,
-    tag: "CAPABILITIES // NOTE",
+    discipline: "web-design" as const,
+    tag: "CURATORIAL // CONTEXT",
     title: "Activities Over Arbitrary Percentages",
-    note: "Notice the absence of percentage bars (e.g., 'React 90%') or floating skill bubbles. Competence is demonstrated through concrete activities, adherence to accessibility standards, and deliberate information architecture."
+    note: "Notice the absence of percentage bars (e.g., 'React 95%') or floating skill bubbles. Competence is framed through genuine problem-solving capabilities across Intelligence, Experience, and Implementation.",
+    isExampleNote: true,
   };
 
   return (
     <section 
       id="about" 
-      aria-label="About and context"
+      aria-label="About Yash Soni"
       style={{
         paddingTop: 'clamp(3.5rem, 7vw, 6rem)',
         paddingBottom: 'clamp(3.5rem, 7vw, 6rem)',
@@ -39,17 +41,17 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
           alignItems: 'baseline',
           marginBottom: 'clamp(2rem, 4vw, 3.5rem)',
           borderBottom: '1px solid var(--color-border)',
-          paddingBottom: '1rem',
+          paddingBottom: '1.25rem',
         }}>
           <div>
-            <span className="curatorial-label">BIOGRAPHY &amp; CAPABILITIES</span>
+            <span className="curatorial-label">BIOGRAPHY &amp; CORE PHILOSOPHY</span>
             <h2 style={{
               fontFamily: 'var(--font-serif)',
               fontSize: 'var(--fs-h1)',
               color: 'var(--color-ink-primary)',
               marginTop: '0.4rem',
             }}>
-              A Little Context
+              One mind. Multiple ways to build.
             </h2>
           </div>
           <span style={{
@@ -57,18 +59,18 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
             fontSize: 'var(--fs-mono)',
             color: 'var(--color-ink-muted)',
           }}>
-            [ RESEARCH &amp; PRACTICE ]
+            [ CONNECTED CAPABILITIES ]
           </span>
         </div>
 
-        {/* 2-Column Grid: Left (Bio & Learning Interests), Right (Capabilities & Personal Note) */}
+        {/* 2-Column Grid: Left (Lead Bio, Education, Placeholders), Right (The 3 Capability Pillars) */}
         <div style={{
           display: 'grid',
           gridTemplateColumns: '1.1fr 1fr',
           gap: 'clamp(2.5rem, 6vw, 5rem)',
           alignItems: 'start',
         }} className="about-grid">
-          {/* Left Column: Extended Bio & Learning Pursuits */}
+          {/* Left Column: Lead Bio & Editable Student Placeholders */}
           <div>
             <h3 style={{
               fontFamily: 'var(--font-serif)',
@@ -76,91 +78,149 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
               marginBottom: '1.25rem',
               color: 'var(--color-ink-primary)',
             }}>
-              Background &amp; Philosophy
+              Background &amp; Direction
             </h3>
 
+            {/* Suggested Editable Copy */}
+            <p style={{
+              fontSize: 'var(--fs-body)',
+              lineHeight: 'var(--lh-body)',
+              color: 'var(--color-ink-secondary)',
+              marginBottom: '2.5rem',
+            }}>
+              {profile.aboutLead}
+            </p>
+
+            {/* Three Editable Placeholders: Education, What I'm Learning, Personal Interest */}
             <div style={{
               display: 'flex',
               flexDirection: 'column',
-              gap: '1rem',
-              marginBottom: '2.5rem',
+              gap: '1.5rem',
+              marginBottom: '2rem',
             }}>
-              {profile.extendedBio.map((paragraph, idx) => (
-                <p 
-                  key={idx}
-                  style={{
-                    fontSize: 'var(--fs-body)',
-                    lineHeight: 'var(--lh-body)',
-                    color: 'var(--color-ink-secondary)',
-                  }}
-                >
-                  {paragraph}
-                </p>
-              ))}
-            </div>
-
-            {/* Current Learning Interests */}
-            <div style={{
-              backgroundColor: 'var(--color-bg)',
-              border: '1px solid var(--color-border)',
-              padding: '1.5rem',
-            }}>
+              {/* 1. Education Details Placeholder */}
               <div style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.5rem',
-                fontFamily: 'var(--font-mono)',
-                fontSize: '0.75rem',
-                color: 'var(--color-accent)',
-                letterSpacing: '0.06em',
-                textTransform: 'uppercase',
-                marginBottom: '1.25rem',
-                fontWeight: 500,
+                backgroundColor: 'var(--color-bg)',
+                border: '1px solid var(--color-border)',
+                padding: '1.25rem',
+                position: 'relative',
               }}>
-                <BookOpen size={15} />
-                <span>Current Learning &amp; Inquiries</span>
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem',
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.75rem',
+                  color: 'var(--color-accent)',
+                  letterSpacing: '0.06em',
+                  textTransform: 'uppercase',
+                  marginBottom: '0.5rem',
+                  fontWeight: 600,
+                }}>
+                  <GraduationCap size={15} />
+                  <span>Academic Background</span>
+                </div>
+                <p style={{
+                  fontFamily: 'var(--font-sans)',
+                  fontSize: '0.9rem',
+                  lineHeight: 1.55,
+                  color: 'var(--color-ink-primary)',
+                  margin: 0,
+                }}>
+                  {profile.educationDetails}
+                </p>
               </div>
 
+              {/* 2. What I'm Learning Now */}
               <div style={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '1.25rem',
+                backgroundColor: 'var(--color-bg)',
+                border: '1px solid var(--color-border)',
+                padding: '1.25rem',
               }}>
-                {profile.learningInterests.map((interest, idx) => (
-                  <div key={idx} style={{
-                    borderLeft: '2px solid var(--color-border)',
-                    paddingLeft: '1rem',
-                  }}>
-                    <h4 style={{
-                      fontFamily: 'var(--font-sans)',
-                      fontSize: '0.95rem',
-                      fontWeight: 600,
-                      color: 'var(--color-ink-primary)',
-                      marginBottom: '0.25rem',
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem',
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.75rem',
+                  color: 'var(--color-accent)',
+                  letterSpacing: '0.06em',
+                  textTransform: 'uppercase',
+                  marginBottom: '1rem',
+                  fontWeight: 600,
+                }}>
+                  <BookOpen size={15} />
+                  <span>What I'm Learning Now</span>
+                </div>
+
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                  {profile.learningNow.map((item, idx) => (
+                    <div key={idx} style={{
+                      borderLeft: '2px solid var(--color-border-dark)',
+                      paddingLeft: '0.85rem',
                     }}>
-                      {interest.topic}
-                    </h4>
-                    <p style={{
-                      fontFamily: 'var(--font-sans)',
-                      fontSize: '0.875rem',
-                      lineHeight: 1.55,
-                      color: 'var(--color-ink-secondary)',
-                      margin: 0,
-                    }}>
-                      {interest.note}
-                    </p>
-                  </div>
-                ))}
+                      <div style={{
+                        fontFamily: 'var(--font-sans)',
+                        fontSize: '0.925rem',
+                        fontWeight: 600,
+                        color: 'var(--color-ink-primary)',
+                        marginBottom: '0.2rem',
+                      }}>
+                        {item.title}
+                      </div>
+                      <div style={{
+                        fontFamily: 'var(--font-sans)',
+                        fontSize: '0.85rem',
+                        color: 'var(--color-ink-secondary)',
+                        lineHeight: 1.5,
+                      }}>
+                        {item.description}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* 3. Personal Interest Outside Technology */}
+              <div style={{
+                backgroundColor: 'var(--color-bg)',
+                border: '1px solid var(--color-border)',
+                padding: '1.25rem',
+              }}>
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem',
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.75rem',
+                  color: 'var(--color-accent)',
+                  letterSpacing: '0.06em',
+                  textTransform: 'uppercase',
+                  marginBottom: '0.5rem',
+                  fontWeight: 600,
+                }}>
+                  <Heart size={15} />
+                  <span>Outside Technology</span>
+                </div>
+                <p style={{
+                  fontFamily: 'var(--font-sans)',
+                  fontSize: '0.9rem',
+                  lineHeight: 1.55,
+                  color: 'var(--color-ink-primary)',
+                  margin: 0,
+                }}>
+                  {profile.personalInterest}
+                </p>
               </div>
             </div>
           </div>
 
-          {/* Right Column: Concrete Capabilities & Memorable Personal Detail */}
+          {/* Right Column: Connected Capabilities in 3 Areas */}
           <div>
             <div style={{
               display: 'flex',
-              alignItems: 'center',
               justifyContent: 'space-between',
+              alignItems: 'baseline',
               marginBottom: '1.25rem',
             }}>
               <h3 style={{
@@ -168,106 +228,123 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
                 fontSize: 'var(--fs-h2)',
                 color: 'var(--color-ink-primary)',
               }}>
-                Core Capabilities
+                Three Connected Disciplines
               </h3>
               <span style={{
                 fontFamily: 'var(--font-mono)',
                 fontSize: '0.7rem',
-                color: 'var(--color-ink-muted)',
+                color: 'var(--color-accent)',
+                letterSpacing: '0.05em',
               }}>
-                VERIFIABLE ACTIVITIES
+                [ METHODOLOGY ]
               </span>
             </div>
 
-            {/* List of Concrete Capabilities */}
             <div style={{
               display: 'flex',
               flexDirection: 'column',
-              gap: '1rem',
-              marginBottom: '2.5rem',
+              gap: '1.5rem',
             }}>
-              {profile.capabilities.map((cap, idx) => (
+              {profile.capabilityPillars.map((pillar) => (
                 <div 
-                  key={idx}
+                  key={pillar.pillar}
                   style={{
                     backgroundColor: 'var(--color-bg)',
                     border: '1px solid var(--color-border)',
-                    padding: '1.25rem',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '0.35rem',
+                    padding: '1.5rem',
+                    transition: 'border-color var(--transition-fast)',
                   }}
                 >
+                  {/* Pillar Header */}
                   <div style={{
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '0.5rem',
+                    justifyContent: 'space-between',
+                    marginBottom: '0.5rem',
                   }}>
-                    <Target size={14} style={{ color: 'var(--color-accent)' }} />
-                    <span style={{
-                      fontFamily: 'var(--font-sans)',
-                      fontSize: '0.95rem',
-                      fontWeight: 600,
-                      color: 'var(--color-ink-primary)',
+                    <div style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.5rem',
                     }}>
-                      {cap.title}
+                      <span style={{
+                        width: '8px',
+                        height: '8px',
+                        borderRadius: '50%',
+                        backgroundColor: 'var(--color-accent)',
+                      }} />
+                      <h4 style={{
+                        fontFamily: 'var(--font-serif)',
+                        fontSize: '1.35rem',
+                        fontWeight: 600,
+                        color: 'var(--color-ink-primary)',
+                      }}>
+                        {pillar.pillar}
+                      </h4>
+                    </div>
+
+                    <span style={{
+                      fontFamily: 'var(--font-mono)',
+                      fontSize: '0.675rem',
+                      color: 'var(--color-accent)',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.05em',
+                    }}>
+                      {pillar.disciplines}
                     </span>
                   </div>
+
                   <p style={{
-                    fontFamily: 'var(--font-sans)',
-                    fontSize: '0.875rem',
+                    fontSize: '0.925rem',
                     lineHeight: 1.55,
                     color: 'var(--color-ink-secondary)',
-                    margin: 0,
-                    paddingLeft: '1.4rem',
+                    marginBottom: '1rem',
                   }}>
-                    {cap.activity}
+                    {pillar.description}
                   </p>
+
+                  {/* Concrete Practice Areas */}
+                  <div style={{
+                    borderTop: '1px dashed var(--color-border)',
+                    paddingTop: '0.75rem',
+                  }}>
+                    <div style={{
+                      fontFamily: 'var(--font-mono)',
+                      fontSize: '0.65rem',
+                      color: 'var(--color-ink-muted)',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.05em',
+                      marginBottom: '0.5rem',
+                    }}>
+                      Key Focus Areas
+                    </div>
+                    <ul style={{
+                      listStyle: 'none',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '0.35rem',
+                      fontFamily: 'var(--font-sans)',
+                      fontSize: '0.85rem',
+                      color: 'var(--color-ink-primary)',
+                    }}>
+                      {pillar.focusAreas.map((area, idx) => (
+                        <li key={idx} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                          <span style={{ color: 'var(--color-accent)', fontFamily: 'var(--font-mono)', fontSize: '0.75rem' }}>→</span>
+                          <span>{area}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               ))}
             </div>
 
-            {/* Thinking Annotation */}
-            <AnnotationBadge 
-              annotation={capabilitiesAnnotation} 
-              isThinkingMode={isThinkingMode} 
-              isMargin={false} 
+            {/* Annotation for capabilities in thinking mode */}
+            <AnnotationBadge
+              annotation={aboutAnnotation}
+              isThinkingMode={isThinkingMode}
+              isMargin={false}
             />
-
-            {/* Memorable Personal Detail Placeholder */}
-            <div style={{
-              marginTop: '1.5rem',
-              padding: '1.25rem',
-              backgroundColor: 'var(--color-accent-tint)',
-              border: '1px dashed var(--color-accent-border)',
-              borderRadius: 'var(--radius-subtle)',
-            }}>
-              <div style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.4rem',
-                fontFamily: 'var(--font-mono)',
-                fontSize: '0.725rem',
-                color: 'var(--color-accent)',
-                fontWeight: 600,
-                textTransform: 'uppercase',
-                letterSpacing: '0.05em',
-                marginBottom: '0.5rem',
-              }}>
-                <Sparkles size={13} />
-                <span>Beyond the Screen</span>
-              </div>
-              <p style={{
-                fontFamily: 'var(--font-sans)',
-                fontSize: '0.9rem',
-                lineHeight: 1.6,
-                color: 'var(--color-ink-primary)',
-                fontStyle: 'italic',
-                margin: 0,
-              }}>
-                {profile.memorableDetail}
-              </p>
-            </div>
           </div>
         </div>
       </div>
@@ -276,7 +353,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
         @media (max-width: 900px) {
           .about-grid {
             grid-template-columns: 1fr !important;
-            gap: 2.5rem !important;
+            gap: 3rem !important;
           }
         }
       `}</style>

@@ -1,3 +1,5 @@
+export type DisciplineArea = 'ai-ml' | 'data-science' | 'ui-ux' | 'web-design' | 'web-dev';
+
 export type AnnotationCategory = 
   | 'observation' 
   | 'tradeoff' 
@@ -8,19 +10,23 @@ export type AnnotationCategory =
 export interface Annotation {
   id: string;
   category: AnnotationCategory;
-  tag: string; // e.g., "OBSERVATION // 01", "TRADE-OFF // NOTE"
+  discipline: DisciplineArea;
+  tag: string; // e.g., "AI/ML PROCESS NOTE // 01"
   title: string;
   note: string;
+  isExampleNote?: boolean;
 }
 
-export interface CapabilityItem {
+export interface CapabilityArea {
+  pillar: string; // e.g. "Intelligence", "Experience", "Implementation"
+  disciplines: string; // e.g. "AI/ML Engineering & Data Science"
+  description: string;
+  focusAreas: string[];
+}
+
+export interface LearningItem {
   title: string;
-  activity: string;
-}
-
-export interface LearningInterest {
-  topic: string;
-  note: string;
+  description: string;
 }
 
 export interface CaseStudyDecision {
@@ -49,14 +55,14 @@ export interface CaseStudyData {
 
 export interface Exhibit {
   id: string;
-  number: string; // e.g. "01"
+  number: string; // "01", "02", "03"
   title: string;
-  category: string;
-  timeframe: string;
-  shortDescription: string;
-  contribution: string;
+  discipline: string; // e.g., "AI/ML & Data Science"
+  conceptBadge: string; // "Sample concept — replace with your project"
+  briefProblem: string;
+  contribution: string; // editable placeholder
   tools: string[];
-  diagramType: 'lexicon' | 'kinetic' | 'specimen';
+  diagramType: 'signal' | 'form-flow' | 'common-ground';
   exhibitAnnotation: Annotation;
   caseStudy: CaseStudyData;
 }
@@ -64,18 +70,27 @@ export interface Exhibit {
 export interface ProfileData {
   name: string;
   monogram: string;
-  discipline: string;
-  oneSentenceIntro: string;
+  specializations: string[];
+  corePositioning: string;
+  shortIntro: string;
   editorialHeadline: {
     line1: string;
     line2: string;
   };
+  aboutLead: string;
+  capabilityPillars: CapabilityArea[];
+  
+  // Customizable placeholders
+  learningNow: LearningItem[];
+  personalInterest: string;
+  educationDetails: string;
+
+  // Contact Configuration
   email: string;
   github: string;
   linkedin: string;
-  extendedBio: string[];
-  capabilities: CapabilityItem[];
-  learningInterests: LearningInterest[];
-  memorableDetail: string;
+  resumeUrl: string;
+
+  // Flag indicating setup mode for college submission
   isPlaceholderData: boolean;
 }

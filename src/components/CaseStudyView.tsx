@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import { ArrowLeft, ArrowRight, CheckCircle2, AlertCircle, Compass } from 'lucide-react';
 import { Exhibit } from '../types/portfolio';
 import { AnnotationBadge } from './AnnotationBadge';
-import { LexiconDiagram } from './diagrams/LexiconDiagram';
-import { KineticFieldDiagram } from './diagrams/KineticFieldDiagram';
-import { SpecimenDiagram } from './diagrams/SpecimenDiagram';
+import { SignalDiagram } from './diagrams/SignalDiagram';
+import { FormFlowDiagram } from './diagrams/FormFlowDiagram';
+import { CommonGroundDiagram } from './diagrams/CommonGroundDiagram';
 
 interface CaseStudyViewProps {
   exhibit: Exhibit;
@@ -32,12 +32,12 @@ export const CaseStudyView: React.FC<CaseStudyViewProps> = ({
 
   const renderVisual = () => {
     switch (exhibit.diagramType) {
-      case 'lexicon':
-        return <LexiconDiagram />;
-      case 'kinetic':
-        return <KineticFieldDiagram />;
-      case 'specimen':
-        return <SpecimenDiagram />;
+      case 'signal':
+        return <SignalDiagram />;
+      case 'form-flow':
+        return <FormFlowDiagram />;
+      case 'common-ground':
+        return <CommonGroundDiagram />;
       default:
         return null;
     }
@@ -58,6 +58,8 @@ export const CaseStudyView: React.FC<CaseStudyViewProps> = ({
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
+          flexWrap: 'wrap',
+          gap: '1rem',
           borderBottom: '1px solid var(--color-border)',
           paddingBottom: '1.25rem',
           marginBottom: '3rem',
@@ -78,19 +80,32 @@ export const CaseStudyView: React.FC<CaseStudyViewProps> = ({
             }}
           >
             <ArrowLeft size={16} aria-hidden="true" />
-            <span>Return to Portfolio</span>
+            <span>Return to Selected Work</span>
           </button>
 
-          <span style={{
-            fontFamily: 'var(--font-mono)',
-            fontSize: 'var(--fs-mono)',
-            color: 'var(--color-ink-muted)',
-          }}>
-            EXHIBIT // {exhibit.number} OF 0{allExhibits.length}
-          </span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+            <span style={{
+              fontFamily: 'var(--font-mono)',
+              fontSize: '0.7rem',
+              color: 'var(--color-accent)',
+              backgroundColor: 'var(--color-accent-tint)',
+              border: '1px solid var(--color-accent-border)',
+              padding: '0.2rem 0.5rem',
+              borderRadius: 'var(--radius-subtle)',
+            }}>
+              {exhibit.conceptBadge}
+            </span>
+            <span style={{
+              fontFamily: 'var(--font-mono)',
+              fontSize: 'var(--fs-mono)',
+              color: 'var(--color-ink-muted)',
+            }}>
+              EXHIBIT // {exhibit.number} OF 0{allExhibits.length}
+            </span>
+          </div>
         </nav>
 
-        {/* Case Study Masthead */}
+        {/* Case Study Header Masthead */}
         <header style={{ marginBottom: 'clamp(2.5rem, 5vw, 4rem)' }}>
           <div style={{
             display: 'flex',
@@ -105,7 +120,7 @@ export const CaseStudyView: React.FC<CaseStudyViewProps> = ({
             <span>CASE STUDY DOCUMENTATION</span>
             <span>//</span>
             <span style={{ color: 'var(--color-ink-secondary)', textTransform: 'uppercase' }}>
-              {exhibit.category}
+              {exhibit.discipline}
             </span>
           </div>
 
@@ -137,29 +152,35 @@ export const CaseStudyView: React.FC<CaseStudyViewProps> = ({
           {/* Metadata Grid */}
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
             gap: '1.25rem',
             backgroundColor: 'var(--color-bg-paper)',
             border: '1px solid var(--color-border)',
             padding: '1.25rem 1.5rem',
           }}>
             <div>
-              <div className="curatorial-label no-dot" style={{ marginBottom: '0.25rem' }}>TIMEFRAME</div>
-              <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem' }}>{exhibit.timeframe}</div>
+              <div className="curatorial-label no-dot" style={{ marginBottom: '0.25rem' }}>DISCIPLINE</div>
+              <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', color: 'var(--color-ink-primary)' }}>
+                {exhibit.discipline}
+              </div>
             </div>
             <div>
               <div className="curatorial-label no-dot" style={{ marginBottom: '0.25rem' }}>CONTRIBUTION</div>
-              <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem' }}>{exhibit.contribution}</div>
+              <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', color: 'var(--color-ink-primary)' }}>
+                {exhibit.contribution}
+              </div>
             </div>
             <div>
-              <div className="curatorial-label no-dot" style={{ marginBottom: '0.25rem' }}>TOOLS &amp; TECH</div>
-              <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem' }}>{exhibit.tools.join(', ')}</div>
+              <div className="curatorial-label no-dot" style={{ marginBottom: '0.25rem' }}>METHODS &amp; TOOLS</div>
+              <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', color: 'var(--color-ink-primary)' }}>
+                {exhibit.tools.join(', ')}
+              </div>
             </div>
           </div>
         </header>
 
         {/* Featured Vector Diagram */}
-        <section style={{ marginBottom: 'clamp(3rem, 6vw, 5rem)' }}>
+        <section style={{ marginBottom: 'clamp(3rem, 6vw, 5rem)' }} aria-label="Project schematic illustration">
           <div style={{
             border: '1px solid var(--color-border)',
             backgroundColor: 'var(--color-bg-paper)',
@@ -176,14 +197,14 @@ export const CaseStudyView: React.FC<CaseStudyViewProps> = ({
             color: 'var(--color-ink-muted)',
           }}>
             <span>EXHIBIT SCHEMATIC NO. {exhibit.number}</span>
-            <span>VECTOR PRECISION // NO PLACEHOLDER BITMAPS</span>
+            <span>VECTOR FIDELITY // NON-RASTER SVG</span>
           </div>
         </section>
 
         {/* Two-Column Editorial Content & Margin Thinking Layer */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: '1fr 320px',
+          gridTemplateColumns: '1fr 340px',
           gap: 'clamp(2rem, 5vw, 4.5rem)',
           alignItems: 'start',
         }} className="case-study-layout">
@@ -192,7 +213,7 @@ export const CaseStudyView: React.FC<CaseStudyViewProps> = ({
             
             {/* 1. Problem & Context */}
             <section aria-labelledby="cs-section-problem">
-              <span className="curatorial-label">CHAPTER 01 // CONTEXT</span>
+              <span className="curatorial-label">CHAPTER 01 // PROBLEM STATEMENT</span>
               <h2 id="cs-section-problem" style={{
                 fontSize: 'var(--fs-h2)',
                 marginTop: '0.5rem',
@@ -213,7 +234,7 @@ export const CaseStudyView: React.FC<CaseStudyViewProps> = ({
 
             {/* 2. Constraints */}
             <section aria-labelledby="cs-section-constraints">
-              <span className="curatorial-label">CHAPTER 02 // PARAMETERS</span>
+              <span className="curatorial-label">CHAPTER 02 // PARAMETERS &amp; BOUNDARIES</span>
               <h2 id="cs-section-constraints" style={{
                 fontSize: 'var(--fs-h2)',
                 marginTop: '0.5rem',
@@ -262,7 +283,7 @@ export const CaseStudyView: React.FC<CaseStudyViewProps> = ({
 
             {/* 3. Approach & Methodology */}
             <section aria-labelledby="cs-section-approach">
-              <span className="curatorial-label">CHAPTER 03 // EXECUTION</span>
+              <span className="curatorial-label">CHAPTER 03 // EXECUTION ARCHITECTURE</span>
               <h2 id="cs-section-approach" style={{
                 fontSize: 'var(--fs-h2)',
                 marginTop: '0.5rem',
@@ -283,13 +304,13 @@ export const CaseStudyView: React.FC<CaseStudyViewProps> = ({
 
             {/* 4. Key Design Decision (The Core Story) */}
             <section aria-labelledby="cs-section-decision">
-              <span className="curatorial-label">CHAPTER 04 // CRITICAL TRADEOFF</span>
+              <span className="curatorial-label">CHAPTER 04 // CRITICAL TRADEOFF &amp; DECISION</span>
               <h2 id="cs-section-decision" style={{
                 fontSize: 'var(--fs-h2)',
                 marginTop: '0.5rem',
                 marginBottom: '1.25rem',
               }}>
-                Key Design Decision: {exhibit.caseStudy.keyDecision.title}
+                Key Decision: {exhibit.caseStudy.keyDecision.title}
               </h2>
 
               {/* Decision Box with Context, Tradeoff, and Resolution */}
@@ -318,7 +339,7 @@ export const CaseStudyView: React.FC<CaseStudyViewProps> = ({
                 </div>
 
                 <div style={{
-                  padding: '0.85rem',
+                  padding: '0.85rem 1rem',
                   backgroundColor: 'rgba(164, 61, 45, 0.05)',
                   border: '1px dashed var(--color-accent-border)',
                 }}>
@@ -358,7 +379,7 @@ export const CaseStudyView: React.FC<CaseStudyViewProps> = ({
 
             {/* 5. Outcome (Honest & Qualitative) */}
             <section aria-labelledby="cs-section-outcome">
-              <span className="curatorial-label">CHAPTER 05 // OUTCOME</span>
+              <span className="curatorial-label">CHAPTER 05 // OUTCOME &amp; OBSERVATION</span>
               <h2 id="cs-section-outcome" style={{
                 fontSize: 'var(--fs-h2)',
                 marginTop: '0.5rem',
@@ -379,7 +400,7 @@ export const CaseStudyView: React.FC<CaseStudyViewProps> = ({
                   fontFamily: 'var(--font-mono)',
                   fontSize: '0.75rem',
                   color: 'var(--color-accent)',
-                  fontWeight: 500,
+                  fontWeight: 600,
                   marginBottom: '0.5rem',
                 }}>
                   <CheckCircle2 size={16} />
@@ -406,7 +427,7 @@ export const CaseStudyView: React.FC<CaseStudyViewProps> = ({
                   color: 'var(--color-ink-muted)',
                 }}>
                   <AlertCircle size={13} />
-                  <span>Note: Results describe actual qualitative observations, avoiding synthetic metrics.</span>
+                  <span>Honest note: Qualitative observations are sample demonstrations. Replace with your verified project findings.</span>
                 </div>
               )}
             </section>
@@ -535,7 +556,7 @@ export const CaseStudyView: React.FC<CaseStudyViewProps> = ({
               className="btn-primary"
               style={{ justifyContent: 'center', padding: '1rem 1.25rem' }}
             >
-              <span>Return to Portfolio Top</span>
+              <span>Return to Selected Work</span>
             </button>
           )}
         </nav>

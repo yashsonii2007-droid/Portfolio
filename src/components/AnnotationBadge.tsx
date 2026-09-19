@@ -33,11 +33,15 @@ export const AnnotationBadge: React.FC<AnnotationBadgeProps> = ({
           alignItems: 'center', 
           gap: '0.25rem',
           fontFamily: 'var(--font-mono)',
-          fontSize: '0.65rem',
-          color: 'var(--color-ink-faint)'
+          fontSize: '0.625rem',
+          color: 'var(--color-ink-muted)',
+          backgroundColor: 'rgba(36, 35, 31, 0.04)',
+          padding: '0.1rem 0.35rem',
+          borderRadius: 'var(--radius-subtle)',
+          letterSpacing: '0.04em',
         }}>
-          <Compass size={11} aria-hidden="true" />
-          FIELD NOTE
+          <Compass size={10} aria-hidden="true" />
+          {annotation.isExampleNote ? 'EXAMPLE PROCESS NOTE' : 'PROCESS NOTE'}
         </span>
       </div>
       <h4 className="annotation-title">

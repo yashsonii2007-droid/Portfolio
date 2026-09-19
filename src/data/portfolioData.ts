@@ -2,241 +2,302 @@ import { ProfileData, Exhibit } from '../types/portfolio';
 
 /**
  * ============================================================================
- * EDITABLE PORTFOLIO CONFIGURATION & DATA SOURCE
+ * YASH SONI — THE ANNOTATED PORTFOLIO DATA CONFIGURATION
  * ============================================================================
- * This file is the single source of truth for all personal details, exhibits,
- * annotations, and case study documentation on your website.
+ * Central source of truth for Yash Soni's identity, connected disciplines,
+ * selected project explorations, process annotations, and contact channels.
  * 
- * To personalize this website for your college submission:
- * 1. Update the fields below marked with "[YOUR ...]" placeholders.
- * 2. Replace the demonstration exhibits in `exhibits` with your real projects.
+ * TO PERSONALIZE FOR FINAL SUBMISSION:
+ * 1. Review or update the placeholders below (Education, Contact links, Learning).
+ * 2. Replace the 3 sample concept exhibits with your own real coursework projects.
  * 3. Set `isPlaceholderData: false` when your real content is in place.
  */
 
 export const profileData: ProfileData = {
-  // Replace with your real name
-  name: "[YOUR NAME]",
-  
-  // Two-letter monogram or initials displayed in masthead & colophon
-  monogram: "YN",
+  name: "Yash Soni",
+  monogram: "YS",
 
-  // Your degree, specialization, or primary creative discipline
-  discipline: "[YOUR COURSE / INTEREST]",
+  // 5 connected disciplines
+  specializations: [
+    "AI/ML Engineer",
+    "Web Designer",
+    "UI/UX Designer",
+    "Web Developer",
+    "Data Scientist"
+  ],
 
-  // Single plainspoken sentence explaining who you are and what you care about
-  oneSentenceIntro: "[ONE SENTENCE ABOUT YOU — e.g. A digital designer and frontend student focusing on deliberate typography, accessible user interfaces, and information clarity.]",
+  // Core positioning statement
+  corePositioning: "I connect intelligence, design, and development.",
 
-  // Opening spread headline (Curious by nature / Deliberate by design)
+  // Short introduction
+  shortIntro: "I’m Yash Soni—exploring the intersection of AI, data, and digital experiences. My focus spans machine learning, web development, and thoughtful interface design.",
+
+  // Primary editorial headline for hero spread
   editorialHeadline: {
-    line1: "Curious by nature.",
-    line2: "Deliberate by design.",
+    line1: "Intelligence, built.",
+    line2: "Experiences, designed.",
   },
 
-  // Contact & Social Links
-  email: "[YOUR EMAIL]",
-  github: "[YOUR GITHUB LINK]",
-  linkedin: "[YOUR LINKEDIN LINK]",
+  // About section lead copy
+  aboutLead: "My interests sit where technical problem-solving meets visual clarity. I’m exploring how machine learning and data can inform useful products, and how design and development can make those products easier to understand and use.",
 
-  // Editorial Bio ("A little context" section)
-  extendedBio: [
-    "I am currently studying [YOUR COURSE / DEGREE], exploring the convergence of structural typography, interaction systems, and resilient frontend code. My focus is on creating web interfaces that treat content with the dignity of print while leveraging the dynamic affordances of the browser.",
-    "Rather than treating interface design as cosmetic decoration, I approach each layout as an editorial problem: how to establish clear visual hierarchy, guide reading attention, and make complex ideas immediately approachable without needless cognitive friction."
-  ],
-
-  // Concrete Capabilities (described through actual activities, no fake percentage bars!)
-  capabilities: [
+  // Three connected capability areas
+  capabilityPillars: [
     {
-      title: "Information Architecture & Layout",
-      activity: "Designing modular editorial grids, hierarchy models, typographic scales, and fluid content systems."
+      pillar: "Intelligence",
+      disciplines: "AI/ML Engineering & Data Science",
+      description: "Investigating model behavior, evaluation rigor, uncertainty estimation, and interpretable outputs rather than opaque probability scores.",
+      focusAreas: [
+        "Model behavior & evaluation criteria",
+        "Feature attribution & explainable AI",
+        "Data hygiene, distributions & assumption testing"
+      ]
     },
     {
-      title: "Accessible Frontend Engineering",
-      activity: "Building semantic, keyboard-navigable components compliant with WCAG 2.1 AA/AAA standards and responsive viewports."
+      pillar: "Experience",
+      disciplines: "UI/UX Design & Web Design",
+      description: "Crafting structured, accessible interfaces where deliberate hierarchy, typographic scales, and cognitive restraint guide user attention.",
+      focusAreas: [
+        "Information hierarchy & reading ergonomics",
+        "Progressive disclosure & workflow simplification",
+        "Accessible contrast (WCAG AAA) & fluid typography"
+      ]
     },
     {
-      title: "Design Systems & Component Documentation",
-      activity: "Defining repeatable design tokens, state variants, CSS custom property architectures, and interaction guidelines."
-    },
-    {
-      title: "Prototyping & Usability Evaluation",
-      activity: "Creating rapid functional prototypes in code to test user flows, observe points of confusion, and refine navigation."
+      pillar: "Implementation",
+      disciplines: "Web Development",
+      description: "Translating design intent into resilient, performant frontend code with zero unnecessary dependencies, clean state, and native accessibility.",
+      focusAreas: [
+        "Component structure & predictable state flows",
+        "Keyboard traversal, ARIA roles & screen-reader parity",
+        "Fluid responsiveness & lightweight vector rendering"
+      ]
     }
   ],
 
-  // Current learning interests & active research topics
-  learningInterests: [
+  // Editable Placeholders: What I'm learning now
+  learningNow: [
     {
-      topic: "Variable Fonts & Fluid Typographic Rhythm",
-      note: "Investigating how optical sizing axes and CSS clamp() can improve long-form reading on ultra-wide and compact screens alike."
+      title: "Model Interpretability Interfaces",
+      description: "[Editable: Studying SHAP/LIME visualization patterns and how to communicate confidence intervals to non-technical users.]"
     },
     {
-      topic: "Accessible State Management in Headless UI",
-      note: "Studying ARIA live regions, focus trapping conventions, and keyboard navigation patterns for complex web documents."
+      title: "Design Tokens & Fluid CSS Architecture",
+      description: "[Editable: Exploring CSS clamp() math and proportional modular scales for seamless cross-viewport rhythm.]"
     },
     {
-      topic: "Low-Bandwidth, High-Fidelity SVG Interfaces",
-      note: "Exploring procedural vector graphics to replace heavy raster imagery without sacrificing graphic richness."
+      title: "Accessible Headless Components",
+      description: "[Editable: Deepening understanding of ARIA live regions and keyboard focus management in single-page apps.]"
     }
   ],
 
-  // Memorable personal detail (grounded, authentic, non-inflated)
-  memorableDetail: "Beyond the code editor: I collect vintage field observation guides, practice analog linocut printmaking, and keep a handwritten notebook of curious interface details encountered in daily life.",
+  // Editable Placeholder: Personal interest outside technology
+  personalInterest: "[Personal Interest Placeholder — e.g. Outside technology, I am drawn to architectural sketching, analog photography, and studying how physical museum exhibits curate historical narratives.]",
 
-  // Flag to display subtle editorial setup hints until personalized
+  // Editable Placeholder: Education details
+  educationDetails: "[Education Placeholder — e.g. Undergraduate Student in Computer Science / Artificial Intelligence, coursework spanning Machine Learning, Algorithms, Human-Computer Interaction, and Modern Web Systems.]",
+
+  // Contact Channels (Leave empty or update with your verified URLs; links only activate when filled)
+  email: "", // e.g. "yashsoni@example.com" — when set, "Copy email" and mailto activate
+  github: "", // e.g. "https://github.com/yashsoni" — when set, GitHub button activates
+  linkedin: "", // e.g. "https://linkedin.com/in/yashsoni" — when set, LinkedIn button activates
+  resumeUrl: "", // e.g. "/resume.pdf" — when set, Résumé button activates
+
+  // Student setup mode banner flag
   isPlaceholderData: true,
 };
 
+/**
+ * ============================================================================
+ * SELECTED WORK EXHIBITS (SAMPLE CONCEPTS)
+ * ============================================================================
+ * These 3 exhibits are authored as honest, illustrative sample concepts.
+ * They demonstrate editorial sequencing, vector schematics, and case-study depth.
+ * Display "Sample concept — replace with your project" on each one.
+ */
 export const exhibits: Exhibit[] = [
   {
-    id: "exhibit-01",
+    id: "signal",
     number: "01",
-    title: "Lexicon",
-    category: "Typography & Information Architecture",
-    timeframe: "Semester Project (Sample Entry)",
-    shortDescription: "An editorial reading interface engineered for dense reference documentation, featuring fluid proportional type scales, high-contrast hierarchical markers, and accessible marginalia.",
-    contribution: "Information architecture, fluid type system, interface prototyping",
-    tools: ["Vanilla CSS", "React", "TypeScript", "WCAG Contrast Analysis"],
-    diagramType: "lexicon",
+    title: "Signal",
+    discipline: "AI/ML & Data Science",
+    conceptBadge: "Sample concept — replace with your project",
+    briefProblem: "Exploring how machine learning model predictions and confidence distributions can be explained through a readable, transparent interface rather than opaque probability scores.",
+    contribution: "Model interpretability framing, uncertainty visualization, explainable UI prototyping [Sample Contribution — Replace with yours]",
+    tools: ["Python", "Feature Attribution", "SVG Vectors", "React", "TypeScript"],
+    diagramType: "signal",
     exhibitAnnotation: {
-      id: "lexicon-note-1",
+      id: "signal-note-1",
       category: "observation",
-      tag: "OBSERVATION // 01",
-      title: "Scale Harmony Across Breakpoints",
-      note: "We tested five modular scales. A classic 1.200 (minor third) preserved vertical rhythm far better across mobile viewports than 1.250 (major third), which caused headline wraps that broke reading continuity."
+      discipline: "ai-ml",
+      tag: "AI/ML PROCESS NOTE // 01",
+      title: "Communicating Uncertainty Over False Certainty",
+      note: "Example process note: A prediction needs context; the interface should communicate uncertainty and confidence intervals rather than imply false certainty.",
+      isExampleNote: true,
     },
     caseStudy: {
-      summary: "A rigorous exploration of how digital technical documentation can adopt the clarity and typographic hierarchy of high-end editorial book design without sacrificing responsive ergonomics.",
-      problem: "Technical documentation often suffers from two extremes: either sprawling generic card layouts that bury hierarchy, or cramped monospace directories that strain reader stamina over sustained sessions.",
+      summary: "An explainable artificial intelligence interface concept designed to translate statistical inference into intuitive, accountable visual explanations for human reviewers.",
+      problem: "Complex machine learning classifiers commonly present predictions as solitary decimal percentages (e.g. '87.4% Match'). This opaque format conceals prediction variance, ignores borderline classifications, and invites blind trust or unwarranted skepticism.",
       constraints: [
-        "Zero external CSS frameworks; must use pure CSS custom properties for instant load.",
-        "Strict compliance with WCAG 2.1 Level AAA contrast for primary reading text (14:1+).",
-        "Target optimal line-length between 60 to 70 characters per line across all viewport widths."
+        "Interface must remain comprehensible to domain specialists without formal machine learning training.",
+        "Must highlight primary driving features without overwhelming reviewers with raw multi-dimensional weight matrices.",
+        "Visual indicators must adhere to high-contrast monochrome and rust-red accents, avoiding generic green/red color reliance."
       ],
-      approach: "We began by analyzing classical book typography—specifically Jan Tschichold's canon of proportions and field manual page compositions. Translating this to responsive web viewports led to an asymmetric grid where navigational metadata sits quietly in an index column, leaving the reading column unencumbered.",
+      approach: "We structured the inspection surface into two synchronized tiers: an upper prediction band showing the confidence interval distribution curve, and a lower feature-attribution waterfall detailing the top positive and negative factors influencing the output.",
       keyDecision: {
-        title: "Eliminating Multi-Level Dropdowns for Persistent Index Rail",
-        context: "Initial wireframes featured nested dropdown navigation to conserve horizontal space.",
-        tradeoff: "Dropdowns reduced initial screen clutter, but user task walkthroughs proved that participants lost track of their location within the documentation taxonomy after two levels of depth.",
-        resolution: "Replaced the hidden dropdowns with a slim, persistent secondary index rail that highlights active scroll position using IntersectionObserver, reducing cognitive re-orientation time."
+        title: "Displaying Confidence Interval Bands Instead of Point Estimates",
+        context: "Early wireframes presented only the top-level classification label and a single bar indicator.",
+        tradeoff: "A single bar is easier to parse in two seconds, but completely obscures model uncertainty on borderline test inputs.",
+        resolution: "Replaced the single bar with a 95% confidence distribution curve and a rust-red threshold marker, allowing human reviewers to immediately gauge classification ambiguity."
       },
       outcome: {
-        status: "Demonstration Project",
-        qualitativeResult: "In comparative usability walkthroughs with four peer participants, readers located specific syntax definitions without navigating back to a top-level directory. Line length stayed within 62–68 characters across test screens.",
-        isDemonstrationNote: true
+        status: "Demonstration Concept",
+        qualitativeResult: "In structured walkthroughs with three student reviewers, participants correctly identified ambiguous predictions 50% faster than with conventional raw scores. (Illustrative sample observation — replace with your project evaluation).",
+        isDemonstrationNote: true,
       },
-      reflection: "Designing for density is fundamentally an exercise in discipline. White space and typographic contrast do far more work to organize information than colored background containers or decorative dividers.",
+      reflection: "Model interpretability is fundamentally an interface design challenge as much as an algorithmic one. Transparent presentation of uncertainty builds resilient human-machine trust.",
       annotations: [
         {
-          id: "cs-lex-1",
+          id: "cs-signal-1",
           category: "tradeoff",
-          tag: "TRADE-OFF // NOTE",
-          title: "System Font vs Custom Webfonts",
-          note: "We limited custom webfonts to exactly three carefully chosen weights to guarantee under-200ms first paint on mobile 4G networks."
+          discipline: "data-science",
+          tag: "DATA SCIENCE NOTE",
+          title: "Feature Independence Assumptions",
+          note: "Example process note: Displaying top contributing features individually simplifies communication, but risks masking multi-collinear feature interactions. A footnote clarifies correlated inputs.",
+          isExampleNote: true,
         },
         {
-          id: "cs-lex-2",
+          id: "cs-signal-2",
           category: "decision",
-          tag: "REVISION // NOTE",
-          title: "Anchor Links with Direct Clipboard Copy",
-          note: "Added discrete section anchor links that copy direct deep-links without jumping the viewport, supporting seamless academic citations."
+          discipline: "web-design",
+          tag: "INTERFACE NOTE",
+          title: "Calibrated Monochrome Palette",
+          note: "Example process note: Kept data visualization elements strictly within ink `#24231F` and ivory `#FAF7F2`, reserving the rust-red accent `#A43D2D` exclusively for outlier anomalies.",
+          isExampleNote: true,
         }
       ]
     }
   },
   {
-    id: "exhibit-02",
+    id: "form-and-flow",
     number: "02",
-    title: "Kinetic Field Guide",
-    category: "Environmental Data Interface",
-    timeframe: "Studio Experiment (Sample Entry)",
-    shortDescription: "A responsive observation console presenting environmental acoustic monitoring data, microclimate telemetry, and field notes with zero latency and native vector rendering.",
-    contribution: "Interaction modeling, SVG vector data visualization, state coordination",
-    tools: ["SVG Architecture", "TypeScript", "CSS Grid", "Web Audio API"],
-    diagramType: "kinetic",
+    title: "Form & Flow",
+    discipline: "UI/UX & Web Design",
+    conceptBadge: "Sample concept — replace with your project",
+    briefProblem: "A UI/UX concept exploring a simpler, stress-free student-facing digital enrollment and academic progression experience through deliberate typography, cognitive load reduction, and linear progression.",
+    contribution: "User journey mapping, typographic scale, component design system [Sample Contribution — Replace with yours]",
+    tools: ["Figma", "Vanilla CSS", "Component Tokens", "WCAG 2.1 AAA"],
+    diagramType: "form-flow",
     exhibitAnnotation: {
-      id: "kinetic-note-1",
-      category: "tradeoff",
-      tag: "TRADE-OFF // NOTE",
-      title: "Pure SVG vs WebGL Canvas",
-      note: "Chose pure SVG vector paths over WebGL. While WebGL renders more raw points, SVG maintained pin-sharp lines on high-DPI displays, supported native CSS styling, and cut overall bundle weight by 88%."
+      id: "form-note-1",
+      category: "decision",
+      discipline: "ui-ux",
+      tag: "UI/UX PROCESS NOTE // 02",
+      title: "Progressive Disclosure Over Form Density",
+      note: "Example process note: Breaking dense academic prerequisites into single-focus stages reduced cognitive anxiety and prevented navigation dead ends.",
+      isExampleNote: true,
     },
     caseStudy: {
-      summary: "An interactive dashboard concept inspired by botanical field surveys, translating complex temporal sensor telemetry into intuitive, legible graphical contours.",
-      problem: "Traditional telemetry dashboards are crowded with neon dial gauges, glowing graphs, and visual noise that make identifying quiet environmental anomalies exhausting for field researchers.",
+      summary: "A human-centered student enrollment interface that replaces overwhelming multi-column registration portals with a calm, progressive editorial experience.",
+      problem: "Traditional academic course selection systems crowd schedules, degree prerequisites, tuition holds, and elective requirements onto a single sprawling grid, creating intense cognitive friction and missed graduation milestones.",
       constraints: [
-        "Lightweight payload to allow operation over intermittent mobile hotspot connections.",
-        "Monochrome-first palette with rust-red accent reserved strictly for threshold anomalies.",
-        "Maintain accessible tabular fallbacks for all visual vector charts."
+        "Must operate flawlessly on small mobile viewports (375px) where students frequently perform quick schedule checks.",
+        "Zero reliance on nested modal popups that disorient users or break the browser back-button flow.",
+        "Strict compliance with WCAG AAA contrast to support prolonged reading sessions in low-light study environments."
       ],
-      approach: "Designed a multi-pane layout structured like an unfolded naturalist notebook. Raw numeric telemetry is paired immediately with human-readable textual observations, grounding abstract metrics in tangible physical reality.",
+      approach: "We adopted an editorial magazine pacing: students navigate their academic trajectory in three clearly delineated chapters (Foundation Requirements, Major Electives, Schedule Balance). Each selection updates a persistent, non-intrusive progress rail.",
       keyDecision: {
-        title: "Dual Representation: Topographic Contour vs Data Table",
-        context: "Researchers need both high-level pattern recognition and exact numerical verification.",
-        tradeoff: "A purely visual chart hides specific values, while a pure table obscures temporal waves.",
-        resolution: "Created an integrated dual-mode panel that synchronizes hover states between the SVG contour lines and an adjacent tabular log, allowing instant verification without toggling modes."
+        title: "Step-wise Progressive Disclosure vs All-in-One Form",
+        context: "Stakeholders originally favored displaying all 12 academic fields simultaneously to reduce total page clicks.",
+        tradeoff: "Fewer clicks meant every student confronted dense warning messages and prerequisites they were not yet eligible for.",
+        resolution: "Implemented a focused, step-wise disclosure model with an accessible keyboard timeline, reducing visual clutter while retaining instant jump navigation to any completed section."
       },
       outcome: {
-        status: "Demonstration Project",
-        qualitativeResult: "The lightweight vector-based layout achieved a 99/100 Lighthouse performance rating with zero layout shifts. Vector contours remained tack-sharp across 4K displays and compact phone viewports.",
-        isDemonstrationNote: true
+        status: "Demonstration Concept",
+        qualitativeResult: "Simulated task testing revealed zero misaligned prerequisite submissions among peer participants. (Illustrative sample observation — replace with your project evaluation).",
+        isDemonstrationNote: true,
       },
-      reflection: "Data visualization is most effective when it resists the urge to show everything at once. Restraint in color and motion allows the actual signal to speak with authority.",
+      reflection: "Good interface design is often about what you choose to remove. Quiet typographic hierarchy does more to comfort an anxious student than any number of colorful badges.",
       annotations: [
         {
-          id: "cs-kin-1",
-          category: "iteration",
-          tag: "ITERATION // NOTE",
-          title: "Smoothing Waveform Interpolation",
-          note: "Early tests used linear polygonal lines that felt harsh. Quadratic Bezier smoothing reduced visual tension without compromising data integrity."
+          id: "cs-flow-1",
+          category: "observation",
+          discipline: "web-design",
+          tag: "TYPOGRAPHY NOTE",
+          title: "Modular Typographic Scale 1.200",
+          note: "Example process note: Used a minor third ratio to ensure chapter headings, field labels, and helper notes establish clear visual priority without jarring size jumps.",
+          isExampleNote: true,
+        },
+        {
+          id: "cs-flow-2",
+          category: "lesson",
+          discipline: "ui-ux",
+          tag: "ACCESSIBILITY NOTE",
+          title: "Touch Target Ergonomics",
+          note: "Example process note: Every interactive checkbox, step indicator, and action button enforces a minimum 44×44px hit area to ensure comfortable one-handed mobile use.",
+          isExampleNote: true,
         }
       ]
     }
   },
   {
-    id: "exhibit-03",
+    id: "common-ground",
     number: "03",
-    title: "Archive & Specimen",
-    category: "Digital Taxonomy & Archival Browser",
-    timeframe: "Research Workshop (Sample Entry)",
-    shortDescription: "An archival cataloging system built around multi-attribute filtering, physical specimen indexing metadata, and instant cross-referencing without jarring modal windows.",
-    contribution: "Taxonomy schema, keyboard navigation pattern, component architecture",
-    tools: ["React", "TypeScript", "ARIA Live", "Local Storage"],
-    diagramType: "specimen",
+    title: "Common Ground",
+    discipline: "Web Development",
+    conceptBadge: "Sample concept — replace with your project",
+    briefProblem: "A web development architecture concept for discovering and organising student campus events with zero external framework dependencies, lightweight DOM updates, and offline-first state synchronization.",
+    contribution: "Frontend architecture, state synchronization, keyboard navigation matrix [Sample Contribution — Replace with yours]",
+    tools: ["React", "TypeScript", "Local Storage", "CSS Grid", "Keyboard Navigation"],
+    diagramType: "common-ground",
     exhibitAnnotation: {
-      id: "specimen-note-1",
-      category: "decision",
-      tag: "REVISION // 03",
-      title: "Replacing Modal Dialogs with Split Pane",
-      note: "User walkthroughs showed researchers lost their sense of catalog context when details opened in modal windows. Replacing modals with a contiguous split pane improved comparison speed significantly."
+      id: "ground-note-1",
+      category: "tradeoff",
+      discipline: "web-dev",
+      tag: "WEB DEV PROCESS NOTE // 03",
+      title: "Virtual Timelines & Native Keyboard Matrix",
+      note: "Example process note: Prioritised semantic keyboard traversal and native grid alignment over bulky third-party calendar plugins.",
+      isExampleNote: true,
     },
     caseStudy: {
-      summary: "A digital specimen catalog that honors the systematic precision of archival museum collections while delivering fast, frictionless digital exploration.",
-      problem: "Online archival repositories frequently hide crucial provenance metadata behind convoluted tab systems, making comparative study between adjacent specimens tedious.",
+      summary: "A high-performance student event directory and scheduling application engineered with pure CSS Grid, deterministic URL-hash state, and zero third-party bundle bloat.",
+      problem: "Campus community websites often rely on bloated third-party calendar libraries (400KB+ JS) that load sluggishly on spotty campus Wi-Fi, trap keyboard focus, and fail basic screen reader audits.",
       constraints: [
-        "Keyboard-first navigation model (tab, arrow keys, and shortcuts for quick catalog browsing).",
-        "Preserve persistent URL state so any filtered view or specimen can be shared with an exact URL hash.",
-        "Zero artificial loading skeletons or simulated delay."
+        "Total JavaScript bundle budget strictly under 50KB gzip for instantaneous first paint.",
+        "Zero external UI component dependencies; all layout and state management built from first principles.",
+        "Full keyboard accessibility: arrow keys navigate the event timeline; Escape key safely returns focus to the date filter."
       ],
-      approach: "We drew inspiration from classic card catalog drawers and physical museum drawers. Each digital entry receives a distinct curatorial accession number, physical dimension specs, and material provenance displayed in a clean tabular grid.",
+      approach: "We architected an asymmetric calendar timeline based on native CSS Grid tracks and an accessible two-dimensional keyboard roving tabindex. State is synced bidirectionally with URL hash parameters for effortless student sharing.",
       keyDecision: {
-        title: "Context-Preserving Split-Pane Inspector",
-        context: "Users frequently need to cross-check traits across multiple specimens simultaneously.",
-        tradeoff: "A full-page detail view provides more space, but breaks the browsing rhythm.",
-        resolution: "Implemented a non-destructive sliding inspection pane that docks alongside the primary catalog grid, maintaining active focus and scroll position in the master index."
+        title: "Zero-Dependency Virtual Grid vs External Calendar Library",
+        context: "Prebuilt calendar libraries provide quick drag-and-drop out of the box, but introduce severe DOM overhead.",
+        tradeoff: "Building a custom grid required writing explicit keyboard roving tabindex handlers and ARIA grid role semantics.",
+        resolution: "Built a bespoke lightweight calendar matrix in native CSS Grid and TypeScript. Total script weight was reduced by 91% while achieving 100% WCAG keyboard compliance."
       },
       outcome: {
-        status: "Demonstration Project",
-        qualitativeResult: "Full keyboard accessibility verified through manual tab-order audits. Testers completed specimen verification tasks smoothly without requiring pointer interaction.",
-        isDemonstrationNote: true
+        status: "Demonstration Concept",
+        qualitativeResult: "Audit achieved 100/100 Lighthouse performance and accessibility scores, rendering schedule updates in under 4 milliseconds. (Illustrative sample observation — replace with your project evaluation).",
+        isDemonstrationNote: true,
       },
-      reflection: "Respecting user focus and spatial orientation creates a sense of digital calmness. When the interface behaves predictably, users can immerse themselves in the material.",
+      reflection: "Investing the effort to build with platform primitives pays compounding dividends in speed, longevity, and accessibility.",
       annotations: [
         {
-          id: "cs-spec-1",
-          category: "lesson",
-          tag: "LESSON // NOTE",
-          title: "Explicit Filter Counters",
-          note: "Adding explicit active filter count badges prevented users from wondering why a specific query returned zero results."
+          id: "cs-ground-1",
+          category: "iteration",
+          discipline: "web-dev",
+          tag: "PERFORMANCE NOTE",
+          title: "URL-Hash State Serialization",
+          note: "Example process note: Encoding active filters and selected date ranges into standard URL hashes enables instant bookmarking without server-side session dependencies.",
+          isExampleNote: true,
+        },
+        {
+          id: "cs-ground-2",
+          category: "decision",
+          discipline: "web-dev",
+          tag: "ACCESSIBILITY NOTE",
+          title: "Roving Tabindex Keyboard Navigation",
+          note: "Example process note: Users traverse chronological event cards with Left/Right and Up/Down arrow keys, preventing repetitive tab presses across busy schedule days.",
+          isExampleNote: true,
         }
       ]
     }

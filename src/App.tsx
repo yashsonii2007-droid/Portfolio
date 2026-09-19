@@ -72,7 +72,7 @@ export const App: React.FC = () => {
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
             <span className="demo-badge">Student Setup Mode</span>
             <span>
-              All content is configured in <code>src/data/portfolioData.ts</code>. Edit your name, discipline, and projects before submitting.
+              Configured in <code>src/data/portfolioData.ts</code>. Personalize education, contact channels, and project concepts before college submission.
             </span>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: 'var(--color-accent)' }}>

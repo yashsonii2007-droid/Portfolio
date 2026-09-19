@@ -29,19 +29,26 @@ export const FooterColophon: React.FC<FooterColophonProps> = ({ profile }) => {
           gap: '2.5rem',
           marginBottom: '3rem',
         }}>
-          {/* Colophon Identity */}
+          {/* Minimal Identity & Positioning */}
           <div>
             <div style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.5rem',
-              fontFamily: 'var(--font-mono)',
-              fontSize: '0.75rem',
-              color: 'var(--color-accent)',
-              marginBottom: '0.75rem',
+              fontFamily: 'var(--font-serif)',
+              fontSize: '1.45rem',
               fontWeight: 600,
+              color: 'var(--color-ink-primary)',
+              marginBottom: '0.35rem',
             }}>
-              <span>COLOPHON // SPECIFICATIONS</span>
+              {profile.name}
+            </div>
+            <div style={{
+              fontFamily: 'var(--font-mono)',
+              fontSize: '0.8rem',
+              color: 'var(--color-accent)',
+              fontWeight: 500,
+              letterSpacing: '0.04em',
+              marginBottom: '0.75rem',
+            }}>
+              Intelligence × Design × Development
             </div>
             <p style={{
               fontFamily: 'var(--font-sans)',
@@ -50,7 +57,7 @@ export const FooterColophon: React.FC<FooterColophonProps> = ({ profile }) => {
               color: 'var(--color-ink-secondary)',
               margin: 0,
             }}>
-              Authored as an annotated field journal and design exhibition. Built with React, TypeScript, and pure CSS custom properties. Zero runtime CSS overhead.
+              The Annotated Portfolio — crafted as an editorial field journal and technical exhibition. Built with React, TypeScript, and pure CSS custom properties.
             </p>
           </div>
 
@@ -76,7 +83,7 @@ export const FooterColophon: React.FC<FooterColophonProps> = ({ profile }) => {
               gap: '0.4rem',
             }}>
               <li><span style={{ color: 'var(--color-ink-muted)' }}>Display: </span>Cormorant Garamond</li>
-              <li><span style={{ color: 'var(--color-ink-muted)' }}>Interface: </span>Manrope</li>
+              <li><span style={{ color: 'var(--color-ink-muted)' }}>Body: </span>Manrope</li>
               <li><span style={{ color: 'var(--color-ink-muted)' }}>Curatorial: </span>IBM Plex Mono</li>
             </ul>
           </div>
@@ -110,7 +117,7 @@ export const FooterColophon: React.FC<FooterColophonProps> = ({ profile }) => {
           </div>
         </div>
 
-        {/* Bottom Bar: Copyright & Back to Top */}
+        {/* Bottom Bar: Copyright & Functional Back to Top */}
         <div style={{
           borderTop: '1px solid var(--color-border)',
           paddingTop: '1.75rem',
@@ -124,7 +131,7 @@ export const FooterColophon: React.FC<FooterColophonProps> = ({ profile }) => {
           color: 'var(--color-ink-muted)',
         }}>
           <div>
-            © {new Date().getFullYear()} {profile.name}. Typeset &amp; engineered with care. Designed to be read.
+            © {new Date().getFullYear()} {profile.name}. Authored with care. Designed to be read.
           </div>
 
           <button
@@ -139,7 +146,10 @@ export const FooterColophon: React.FC<FooterColophonProps> = ({ profile }) => {
               display: 'inline-flex',
               alignItems: 'center',
               gap: '0.4rem',
+              minHeight: '44px',
+              padding: '0 0.5rem',
             }}
+            aria-label="Scroll back to top of page"
           >
             <span>Back to top</span>
             <ArrowUp size={14} aria-hidden="true" />

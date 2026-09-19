@@ -1,38 +1,61 @@
-# The Annotated Portfolio
+# Yash Soni — The Annotated Portfolio
 
-> *“The finished work is only half the story. The interesting part is how I got there.”*
+> *“See what I make. Discover how I think.”*
 
-A personal portfolio built as a field journal crossed with a contemporary design exhibition. Instead of generic AI portfolio aesthetics (neon gradients, glowing cards, glassmorphism, floating skill spheres, or fake terminal windows), this website is built with strict typographic discipline, generous whitespace, asymmetric curatorial grids, and an interactive **“Show my thinking”** annotation layer.
+An editorial personal portfolio website authored for **Yash Soni**. Designed at the convergence of a personal field journal and a contemporary design exhibition, this portfolio unifies five connected specializations under one cohesive philosophy:
+
+> **“I connect intelligence, design, and development.”**
+
+The five connected disciplines:
+1. **AI/ML Engineer**
+2. **Web Designer**
+3. **UI/UX Designer**
+4. **Web Developer**
+5. **Data Scientist**
 
 ---
 
-## The Signature Interaction: "Show My Thinking"
+## Creative Concept: "The Annotated Portfolio"
 
-In the header masthead, the **“Show my thinking”** toggle shifts the site between two modes:
-1. **Editorial Mode (OFF):** A clean, restrained gallery exhibition suitable for evaluators seeking a polished overview.
-2. **Field Journal Mode (ON):** Reveals curatorial marginalia beside projects, design decisions, and tradeoffs.
+The website introduces a signature interaction: **“Show my thinking”**.
 
-On wide viewports, notes render in dedicated margins with fine ruled connector lines. On mobile viewports, notes flow inline directly below each respective decision or exhibit. State is remembered via `localStorage` and adheres to `prefers-reduced-motion`.
+- **Clean Editorial Mode (Default):** A polished, high-contrast exhibition of completed project explorations.
+- **Thinking Mode (Active):** Reveals author process notes, design decisions, engineering trade-offs, and critical questions directly beside relevant work.
+
+On desktop screens, process notes appear in a dedicated margin column with subtle alignment marks. On mobile screens, notes flow inline directly below the corresponding element. All notes are connected to Yash's five disciplines (AI/ML, Data Science, UI/UX, Web Design, Web Development). Preference is automatically persisted in `localStorage`.
 
 ---
 
-## Visual Direction & Design Tokens
+## Visual Identity & Design System
 
-- **Palette:**
-  - Background: Warm Ivory (`#F5F1E8`)
-  - Ink Primary: Near-Black Ink (`#24231F` — 14.6:1 AAA contrast)
-  - Ink Secondary / Labels: Muted Grey (`#5E5B54` / `#78746B`)
-  - Curatorial Accent: Restrained Rust-Red (`#A43D2D` — 5.3:1 contrast)
-  - Subtle Paper Texture: Ultra-lightweight SVG procedural noise overlay
-- **Typography:**
-  - Display / Headlines: *Cormorant Garamond* (Serif)
-  - Body & Controls: *Manrope* (Sans-serif)
-  - Exhibits & Marginalia: *IBM Plex Mono* (Monospace)
-- **Grid & Layout:**
-  - Asymmetric editorial proportions
-  - Fluid type scale via `clamp()`
-  - Reading constraint of 60–70 characters per line
-  - WCAG 2.1 Level AA/AAA compliance with visible keyboard focus rings and skip-to-content link
+- **Chromatic Palette:**
+  - **Warm Ivory Background:** `#F5F1E8`
+  - **Near-Black Ink:** `#24231F` (WCAG AAA contrast 14.6:1)
+  - **Muted Grey:** `#78746B` (Secondary curatorial metadata)
+  - **Restrained Rust-Red:** `#A43D2D` (Curatorial accents & critical thresholds)
+  - Subtle non-intrusive organic paper texture overlay.
+- **Typography Stack:**
+  - **Headlines & Display:** *Cormorant Garamond* (Refined editorial serif)
+  - **Body & Navigation:** *Manrope* (Clean geometric sans-serif)
+  - **Curatorial Labels & Code:** *IBM Plex Mono* (Monospace)
+- **Zero Gimmicks Policy:**
+  - Strictly no purple gradients, floating blobs, glassmorphism, fake percentage bars, rotating job titles, stock office photos, or custom cursors.
+  - Generous whitespace, asymmetric grids, fine divider rules, and fluid typography.
+
+---
+
+## Selected Explorations (Sample Concepts)
+
+The portfolio features three illustrative sample concepts, each clearly marked with `Sample concept — replace with your project`:
+
+1. **Exhibit 01 — Signal (AI/ML & Data Science):**
+   - Focus: Explainable AI interface and confidence distribution curve, communicating prediction uncertainty and feature attribution waterfalls rather than opaque single percentages.
+2. **Exhibit 02 — Form & Flow (UI/UX & Web Design):**
+   - Focus: A calm, progressive student-facing enrollment experience using step-wise progressive disclosure to reduce cognitive anxiety.
+3. **Exhibit 03 — Common Ground (Web Development):**
+   - Focus: Campus event discovery and scheduling matrix built with native CSS Grid, deterministic URL-hash state, and keyboard roving tabindex navigation (zero runtime dependencies).
+
+Each project includes a full case-study documentation page (`#/project/:id`) detailing the **Overview**, **Problem Statement**, **Constraints**, **Approach**, **Key Decision (Context, Tradeoff, Resolution)**, **Outcome**, and **Reflection**.
 
 ---
 
@@ -46,105 +69,70 @@ On wide viewports, notes render in dedicated margins with fine ruled connector l
 npm install
 ```
 
-### 2. Start Local Development Server
+### 2. Run Local Development Server
 ```bash
 npm run dev
 ```
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Open [http://localhost:5173](http://localhost:5173) in your browser.
 
 ### 3. Build for Production
 ```bash
 npm run build
 ```
-Generates a zero-dependency static production bundle in `dist/`.
+Compiles TypeScript and bundles the site into the `dist/` directory.
 
-### 4. Preview Production Build
+### 4. Preview Production Build Locally
 ```bash
 npm run preview
 ```
 
 ---
 
-## Personalizing Content for Your College Assignment
+## Where to Personalize Content
 
 All content across the entire portfolio is centralized in a single configuration file:
 👉 **[`src/data/portfolioData.ts`](file:///c:/Users/hp/Desktop/Portfolio/src/data/portfolioData.ts)**
 
-### Step 1: Update Your Personal Details
-Open `src/data/portfolioData.ts` and replace the placeholder fields:
-- `name`: Your full name
-- `monogram`: Your two-letter initials
-- `discipline`: Your course, major, or area of focus
-- `oneSentenceIntro`: A plainspoken one-sentence summary
-- `email`: Your real email address
-- `github` / `linkedin`: Your profile URLs
-- `extendedBio`: Paragraphs for the "A little context" section
-- `capabilities`: Concrete activities you perform (no arbitrary percentage bars)
-- `learningInterests`: Topics you are currently researching
-- `memorableDetail`: A grounded detail beyond your course title
+### 1. Personal Details & Placeholders
+In `src/data/portfolioData.ts`, update:
+- `educationDetails`: Replace with your college degree, university name, and coursework.
+- `learningNow`: Update the topics you are currently researching.
+- `personalInterest`: Add your authentic interests outside technology.
 
-### Step 2: Replace Sample Demonstration Exhibits
-The site includes three demonstration exhibits:
-1. **Exhibit 01 (Lexicon):** Typography & Information Architecture
-2. **Exhibit 02 (Kinetic Field Guide):** Environmental Data Interface
-3. **Exhibit 03 (Archive & Specimen):** Archival Cataloging System
+### 2. Contact Channels
+Configure your verified contact channels:
+```typescript
+email: "your.name@college.edu", // Activates mailto and the "Copy email" action
+github: "https://github.com/yourhandle", // Activates GitHub button
+linkedin: "https://linkedin.com/in/yourhandle", // Activates LinkedIn button
+resumeUrl: "/resume.pdf", // Activates Résumé download button
+```
+> *Note: Contact buttons only activate when valid values are provided. No fake emails or broken links are generated by default.*
 
-To add your own projects:
-1. Edit the `exhibits` array in `src/data/portfolioData.ts`.
-2. Fill in:
-   - Title, category, timeframe, short description, your contribution, and tools.
-   - `exhibitAnnotation`: A key tradeoff or observation for the "Show my thinking" layer.
-   - `caseStudy`: Complete documentation including Problem, Constraints, Approach, Key Design Decision, Outcome, and Reflection.
-3. Once your real information is configured, set `isPlaceholderData: false` at the bottom of `src/data/portfolioData.ts` to hide the template setup banner.
+### 3. Replacing Sample Concepts with Your Coursework Projects
+In `src/data/portfolioData.ts`, edit the `exhibits` array:
+1. Update `title`, `discipline`, `briefProblem`, `contribution`, and `tools`.
+2. Update the `caseStudy` object with your actual problem statement, constraints, methodology, key technical tradeoff, outcome, and retrospective.
+3. Update the `exhibitAnnotation` with a genuine process note or engineering insight from your work.
+4. When ready for submission, toggle `isPlaceholderData: false` to remove the top setup banner.
 
 ---
 
-## Deployment & Routing
+## How to Deploy
 
-The project uses hash-based client routing (`#/project/exhibit-01`) and relative asset paths (`base: './'`). This ensures:
-- **Zero 404 Rewrite Issues:** Runs out of the box on GitHub Pages, Netlify, Vercel, or any standard static file server without special server rewrite configuration.
-- **Direct Addressability:** Case study URLs can be directly bookmarked or shared.
+The website is a static single-page application (SPA) built with Vite and React. It can be deployed to any modern static hosting provider:
 
-### Deploying to GitHub Pages
-1. Build the production bundle:
-   ```bash
-   npm run build
-   ```
-2. Deploy the generated `dist/` directory to your `gh-pages` branch.
+### Vercel
+1. Install the Vercel CLI: `npm i -g vercel`
+2. Run `vercel` in the project root directory.
+3. Set build command to `npm run build` and output directory to `dist`.
 
----
+### Netlify
+1. Connect your repository to Netlify.
+2. Build command: `npm run build`
+3. Publish directory: `dist`
 
-## Project Structure
-
-```
-Portfolio/
-├── index.html                   # HTML5 entry with fonts, SEO & theme color
-├── package.json                 # React, TypeScript, Vite & dependencies
-├── tsconfig.json                # Strict TypeScript configuration
-├── vite.config.ts               # Vite bundler configuration (relative base './')
-├── dist/                        # Optimized production build
-├── public/
-│   └── favicon.svg              # Typographic monogram SVG favicon
-└── src/
-    ├── main.tsx                 # Root React DOM mount
-    ├── App.tsx                  # App layout, thinking mode state, hash routing
-    ├── index.css                # CSS custom properties, typography & fluid scales
-    ├── types/
-    │   └── portfolio.ts         # TypeScript interfaces
-    ├── data/
-    │   └── portfolioData.ts     # SINGLE SOURCE OF TRUTH for all site copy
-    └── components/
-        ├── Header.tsx           # Masthead with thinking toggle switch
-        ├── HeroSpread.tsx       # Magazine opening spread & typographic monogram
-        ├── ExhibitSequence.tsx  # Editorial project sequence container
-        ├── ExhibitItem.tsx      # Individual alternating exhibit layout
-        ├── AnnotationBadge.tsx  # Field journal process note component
-        ├── CaseStudyView.tsx    # Addressable case study page
-        ├── AboutSection.tsx     # Bio, concrete capabilities, learning topics
-        ├── ContactSection.tsx   # Copy email with toast, social verification
-        ├── FooterColophon.tsx   # Typography colophon & palette chips
-        └── diagrams/            # Pure local SVG/CSS vector previews
-            ├── LexiconDiagram.tsx
-            ├── KineticFieldDiagram.tsx
-            └── SpecimenDiagram.tsx
-```
+### GitHub Pages
+1. In `vite.config.ts`, set `base: '/<repository-name>/'` (if deploying to a subpath).
+2. Build with `npm run build`.
+3. Deploy the contents of the `dist/` folder to the `gh-pages` branch.

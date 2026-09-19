@@ -2,9 +2,9 @@ import React from 'react';
 import { ArrowUpRight, Wrench, UserCheck } from 'lucide-react';
 import { Exhibit } from '../types/portfolio';
 import { AnnotationBadge } from './AnnotationBadge';
-import { LexiconDiagram } from './diagrams/LexiconDiagram';
-import { KineticFieldDiagram } from './diagrams/KineticFieldDiagram';
-import { SpecimenDiagram } from './diagrams/SpecimenDiagram';
+import { SignalDiagram } from './diagrams/SignalDiagram';
+import { FormFlowDiagram } from './diagrams/FormFlowDiagram';
+import { CommonGroundDiagram } from './diagrams/CommonGroundDiagram';
 
 interface ExhibitItemProps {
   exhibit: Exhibit;
@@ -19,17 +19,17 @@ export const ExhibitItem: React.FC<ExhibitItemProps> = ({
   isThinkingMode,
   onSelectExhibit,
 }) => {
-  // Alternate layout: 0 (even) = visual left / text right; 1 (odd) = text left / visual right
+  // Alternate layout: even = visual left / text right; odd = text left / visual right
   const isOdd = index % 2 === 1;
 
   const renderDiagram = () => {
     switch (exhibit.diagramType) {
-      case 'lexicon':
-        return <LexiconDiagram />;
-      case 'kinetic':
-        return <KineticFieldDiagram />;
-      case 'specimen':
-        return <SpecimenDiagram />;
+      case 'signal':
+        return <SignalDiagram />;
+      case 'form-flow':
+        return <FormFlowDiagram />;
+      case 'common-ground':
+        return <CommonGroundDiagram />;
       default:
         return null;
     }
@@ -40,8 +40,8 @@ export const ExhibitItem: React.FC<ExhibitItemProps> = ({
       id={`exhibit-${exhibit.number}`}
       aria-labelledby={`heading-exhibit-${exhibit.id}`}
       style={{
-        paddingTop: 'clamp(3rem, 7vw, 5.5rem)',
-        paddingBottom: 'clamp(3.5rem, 8vw, 6rem)',
+        paddingTop: 'clamp(3rem, 6vw, 5rem)',
+        paddingBottom: 'clamp(3.5rem, 7vw, 5.5rem)',
         borderBottom: '1px solid var(--color-border)',
         position: 'relative',
       }}
@@ -51,15 +51,17 @@ export const ExhibitItem: React.FC<ExhibitItemProps> = ({
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'baseline',
+        flexWrap: 'wrap',
+        gap: '0.75rem',
         marginBottom: '2rem',
         borderBottom: '1px solid var(--color-border-subtle)',
         paddingBottom: '0.65rem',
       }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
           <span style={{
             fontFamily: 'var(--font-mono)',
             fontSize: 'var(--fs-mono)',
-            fontWeight: 500,
+            fontWeight: 600,
             color: 'var(--color-accent)',
             letterSpacing: '0.08em',
           }}>
@@ -72,15 +74,22 @@ export const ExhibitItem: React.FC<ExhibitItemProps> = ({
             color: 'var(--color-ink-muted)',
             textTransform: 'uppercase',
           }}>
-            {exhibit.category}
+            {exhibit.discipline}
           </span>
         </div>
+
+        {/* Required label: "Sample concept — replace with your project" */}
         <span style={{
           fontFamily: 'var(--font-mono)',
-          fontSize: 'var(--fs-mono)',
-          color: 'var(--color-ink-faint)',
+          fontSize: '0.7rem',
+          color: 'var(--color-accent)',
+          backgroundColor: 'var(--color-accent-tint)',
+          border: '1px solid var(--color-accent-border)',
+          padding: '0.2rem 0.55rem',
+          borderRadius: 'var(--radius-subtle)',
+          letterSpacing: '0.03em',
         }}>
-          {exhibit.timeframe}
+          {exhibit.conceptBadge}
         </span>
       </div>
 
@@ -89,7 +98,7 @@ export const ExhibitItem: React.FC<ExhibitItemProps> = ({
         className={`exhibit-grid ${isOdd ? 'odd-layout' : 'even-layout'}`}
         style={{
           display: 'grid',
-          gridTemplateColumns: isOdd ? '1fr 1.2fr' : '1.2fr 1fr',
+          gridTemplateColumns: isOdd ? '1fr 1.25fr' : '1.25fr 1fr',
           gap: 'clamp(2rem, 5vw, 4rem)',
           alignItems: 'start',
         }}
@@ -118,11 +127,11 @@ export const ExhibitItem: React.FC<ExhibitItemProps> = ({
             fontSize: '0.675rem',
             color: 'var(--color-ink-muted)',
           }}>
-            <span>FIGURE PREVIEW / NON-RASTER SVG</span>
+            <span>FIGURE 0{index + 1} / ORIGINAL SVG SCHEMATIC</span>
             <span>VECTOR FIDELITY 1:1</span>
           </div>
 
-          {/* Desktop Marginalia Annotation (Positioned below visual on wide screens) */}
+          {/* Desktop Marginalia Annotation (Positioned directly below visual in desktop column) */}
           <div className="desktop-margin-annotation">
             <AnnotationBadge 
               annotation={exhibit.exhibitAnnotation} 
@@ -163,7 +172,7 @@ export const ExhibitItem: React.FC<ExhibitItemProps> = ({
               color: 'var(--color-ink-secondary)',
               marginBottom: '1.75rem',
             }}>
-              {exhibit.shortDescription}
+              {exhibit.briefProblem}
             </p>
 
             {/* Structured Metadata Box */}
@@ -176,7 +185,7 @@ export const ExhibitItem: React.FC<ExhibitItemProps> = ({
               flexDirection: 'column',
               gap: '1rem',
             }}>
-              {/* Contribution */}
+              {/* Contribution or Editable Placeholder */}
               <div>
                 <div style={{
                   display: 'flex',
@@ -190,19 +199,20 @@ export const ExhibitItem: React.FC<ExhibitItemProps> = ({
                   marginBottom: '0.25rem',
                 }}>
                   <UserCheck size={12} />
-                  <span>Contribution</span>
+                  <span>Contribution Scope</span>
                 </div>
                 <div style={{
                   fontFamily: 'var(--font-sans)',
                   fontSize: '0.9rem',
                   fontWeight: 500,
                   color: 'var(--color-ink-primary)',
+                  lineHeight: 1.45,
                 }}>
                   {exhibit.contribution}
                 </div>
               </div>
 
-              {/* Tools */}
+              {/* Tools & Environment */}
               <div>
                 <div style={{
                   display: 'flex',
@@ -216,7 +226,7 @@ export const ExhibitItem: React.FC<ExhibitItemProps> = ({
                   marginBottom: '0.35rem',
                 }}>
                   <Wrench size={12} />
-                  <span>Tools &amp; Environment</span>
+                  <span>Methods &amp; Stack</span>
                 </div>
                 <div style={{
                   display: 'flex',
@@ -244,7 +254,7 @@ export const ExhibitItem: React.FC<ExhibitItemProps> = ({
             </div>
           </div>
 
-          {/* Action CTA */}
+          {/* View Case Study Link Button */}
           <div>
             <button
               onClick={() => onSelectExhibit(exhibit.id)}
@@ -253,7 +263,7 @@ export const ExhibitItem: React.FC<ExhibitItemProps> = ({
                 width: '100%',
                 justifyContent: 'space-between',
               }}
-              aria-label={`View complete case study for ${exhibit.title}`}
+              aria-label={`View complete case study documentation for ${exhibit.title}`}
             >
               <span>View case study</span>
               <ArrowUpRight size={16} aria-hidden="true" />
@@ -297,6 +307,7 @@ export const ExhibitItem: React.FC<ExhibitItemProps> = ({
           }
           .mobile-inline-annotation {
             display: block;
+            margin-top: 1.5rem;
           }
         }
       `}</style>

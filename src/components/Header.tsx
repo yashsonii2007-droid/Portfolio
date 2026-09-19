@@ -23,13 +23,12 @@ export const Header: React.FC<HeaderProps> = ({
     setMobileMenuOpen(false);
     if (activeRoute !== 'home') {
       onNavigate('home');
-      // Allow DOM to update before scrolling
       setTimeout(() => {
         const element = document.getElementById(sectionId);
         if (element) {
           element.scrollIntoView({ behavior: 'smooth' });
         }
-      }, 100);
+      }, 120);
     } else {
       const element = document.getElementById(sectionId);
       if (element) {
@@ -43,7 +42,7 @@ export const Header: React.FC<HeaderProps> = ({
       position: 'sticky',
       top: 0,
       zIndex: 1000,
-      backgroundColor: 'rgba(245, 241, 232, 0.94)',
+      backgroundColor: 'rgba(245, 241, 232, 0.95)',
       backdropFilter: 'blur(8px)',
       WebkitBackdropFilter: 'blur(8px)',
       borderBottom: '1px solid var(--color-border)',
@@ -55,7 +54,7 @@ export const Header: React.FC<HeaderProps> = ({
         justifyContent: 'space-between',
         height: 'var(--header-height)',
       }}>
-        {/* Left: Monogram / Name Branding */}
+        {/* Left: Monogram / Yash Soni Identity */}
         <button
           onClick={() => {
             onNavigate('home');
@@ -64,7 +63,7 @@ export const Header: React.FC<HeaderProps> = ({
           style={{
             background: 'none',
             border: 'none',
-            padding: '0.5rem 0',
+            padding: '0.4rem 0',
             cursor: 'pointer',
             display: 'flex',
             alignItems: 'center',
@@ -78,21 +77,33 @@ export const Header: React.FC<HeaderProps> = ({
             display: 'inline-flex',
             alignItems: 'center',
             justifyContent: 'center',
-            width: '34px',
-            height: '34px',
-            border: '1px solid var(--color-ink-primary)',
+            width: '36px',
+            height: '36px',
+            border: '1.5px solid var(--color-ink-primary)',
             fontFamily: 'var(--font-serif)',
-            fontSize: '1.15rem',
+            fontSize: '1.2rem',
             fontWeight: 600,
             color: 'var(--color-ink-primary)',
             backgroundColor: 'var(--color-bg-paper)',
+            borderRadius: 'var(--radius-subtle)',
+            position: 'relative',
           }}>
             {profile.monogram}
+            <span style={{
+              position: 'absolute',
+              top: '4px',
+              right: '4px',
+              width: '4px',
+              height: '4px',
+              borderRadius: '50%',
+              backgroundColor: 'var(--color-accent)',
+            }} />
           </span>
+
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <span style={{
               fontFamily: 'var(--font-sans)',
-              fontSize: '0.95rem',
+              fontSize: '0.975rem',
               fontWeight: 600,
               color: 'var(--color-ink-primary)',
               letterSpacing: '-0.01em',
@@ -107,7 +118,7 @@ export const Header: React.FC<HeaderProps> = ({
               letterSpacing: '0.04em',
               textTransform: 'uppercase',
             }}>
-              {profile.discipline}
+              THE ANNOTATED PORTFOLIO
             </span>
           </div>
         </button>
@@ -135,7 +146,7 @@ export const Header: React.FC<HeaderProps> = ({
                 padding: '0 0.5rem',
               }}
             >
-              Selected Work
+              Work
             </button>
             <button
               onClick={() => handleNavClick('about')}
@@ -152,7 +163,7 @@ export const Header: React.FC<HeaderProps> = ({
                 padding: '0 0.5rem',
               }}
             >
-              Context
+              About
             </button>
             <button
               onClick={() => handleNavClick('contact')}
@@ -173,15 +184,15 @@ export const Header: React.FC<HeaderProps> = ({
             </button>
           </nav>
 
-          {/* Vertical divider */}
-          <div style={{ width: '1px', height: '22px', backgroundColor: 'var(--color-border)' }} aria-hidden="true" />
+          {/* Fine vertical rule */}
+          <div style={{ width: '1px', height: '24px', backgroundColor: 'var(--color-border)' }} aria-hidden="true" />
 
           {/* Signature Interaction: "Show my thinking" Accessible Switch */}
           <button
             onClick={onToggleThinking}
             role="switch"
             aria-checked={isThinkingMode}
-            aria-label="Show my thinking: toggle field journal annotations and process notes"
+            aria-label="Show my thinking: reveal contextual design decisions, engineering trade-offs, and field notes"
             style={{
               display: 'inline-flex',
               alignItems: 'center',
@@ -200,13 +211,13 @@ export const Header: React.FC<HeaderProps> = ({
               alignItems: 'center',
               color: isThinkingMode ? 'var(--color-accent)' : 'var(--color-ink-muted)',
             }}>
-              <Lightbulb size={15} />
+              <Lightbulb size={16} />
             </span>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', textAlign: 'left' }}>
               <span style={{
                 fontFamily: 'var(--font-mono)',
                 fontSize: '0.725rem',
-                fontWeight: 500,
+                fontWeight: 600,
                 color: isThinkingMode ? 'var(--color-accent)' : 'var(--color-ink-primary)',
                 letterSpacing: '0.02em',
               }}>
@@ -219,10 +230,10 @@ export const Header: React.FC<HeaderProps> = ({
                 textTransform: 'uppercase',
                 letterSpacing: '0.05em',
               }}>
-                {isThinkingMode ? '[ Journal: ON ]' : '[ Editorial: OFF ]'}
+                {isThinkingMode ? '[ Notes: REVEALED ]' : '[ Editorial: CLEAN ]'}
               </span>
             </div>
-            {/* Indicator Dot */}
+            {/* Visual indicator dot */}
             <span style={{
               width: '7px',
               height: '7px',
@@ -234,48 +245,48 @@ export const Header: React.FC<HeaderProps> = ({
           </button>
         </div>
 
-        {/* Mobile Navigation Toggle Button */}
-        <div className="mobile-toggle" style={{ display: 'none', alignItems: 'center', gap: '0.75rem' }}>
-          {/* Mobile thinking quick toggle button */}
+        {/* Mobile Nav Control Group */}
+        <div className="mobile-toggle-group" style={{ display: 'none', alignItems: 'center', gap: '0.5rem' }}>
+          {/* Quick thinking switch for mobile */}
           <button
             onClick={onToggleThinking}
             role="switch"
             aria-checked={isThinkingMode}
-            aria-label="Toggle thinking mode"
+            aria-label="Toggle thinking process notes"
             style={{
-              padding: '0.4rem 0.6rem',
+              padding: '0.5rem 0.65rem',
+              minHeight: '44px',
+              minWidth: '44px',
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
               background: isThinkingMode ? 'var(--color-accent-tint)' : 'var(--color-bg-paper)',
               border: `1px solid ${isThinkingMode ? 'var(--color-accent)' : 'var(--color-border)'}`,
               borderRadius: 'var(--radius-subtle)',
+              color: isThinkingMode ? 'var(--color-accent)' : 'var(--color-ink-secondary)',
               cursor: 'pointer',
-              fontFamily: 'var(--font-mono)',
-              fontSize: '0.65rem',
-              color: isThinkingMode ? 'var(--color-accent)' : 'var(--color-ink-primary)',
-              minHeight: '44px',
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.35rem',
             }}
           >
-            <Lightbulb size={13} />
-            <span>{isThinkingMode ? 'Thinking: ON' : 'Thinking'}</span>
+            <Lightbulb size={18} />
           </button>
 
+          {/* Menu Drawer Toggle */}
           <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            onClick={() => setMobileMenuOpen(prev => !prev)}
             aria-expanded={mobileMenuOpen}
             aria-label="Toggle navigation menu"
             style={{
-              background: 'none',
-              border: '1px solid var(--color-border)',
               padding: '0.5rem',
-              cursor: 'pointer',
-              color: 'var(--color-ink-primary)',
-              display: 'flex',
+              minHeight: '44px',
+              minWidth: '44px',
+              display: 'inline-flex',
               alignItems: 'center',
               justifyContent: 'center',
-              width: '44px',
-              height: '44px',
+              background: 'none',
+              border: '1px solid var(--color-border)',
+              borderRadius: 'var(--radius-subtle)',
+              color: 'var(--color-ink-primary)',
+              cursor: 'pointer',
             }}
           >
             {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -283,71 +294,133 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
       </div>
 
-      {/* Mobile Drawer Menu */}
+      {/* Mobile Menu Dropdown / Overlay */}
       {mobileMenuOpen && (
-        <div style={{
-          backgroundColor: 'var(--color-bg-paper)',
-          borderBottom: '1px solid var(--color-border)',
-          padding: '1.25rem clamp(1.25rem, 4vw, 3rem)',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '1rem',
-        }}>
-          <button
-            onClick={() => handleNavClick('work')}
-            style={{
-              background: 'none',
-              border: 'none',
-              textAlign: 'left',
-              fontFamily: 'var(--font-mono)',
-              fontSize: 'var(--fs-small)',
-              color: 'var(--color-ink-primary)',
-              padding: '0.6rem 0',
-              cursor: 'pointer',
-            }}
-          >
-            01. Selected Work
-          </button>
-          <button
-            onClick={() => handleNavClick('about')}
-            style={{
-              background: 'none',
-              border: 'none',
-              textAlign: 'left',
-              fontFamily: 'var(--font-mono)',
-              fontSize: 'var(--fs-small)',
-              color: 'var(--color-ink-primary)',
-              padding: '0.6rem 0',
-              cursor: 'pointer',
-            }}
-          >
-            02. Context &amp; Capabilities
-          </button>
-          <button
-            onClick={() => handleNavClick('contact')}
-            style={{
-              background: 'none',
-              border: 'none',
-              textAlign: 'left',
-              fontFamily: 'var(--font-mono)',
-              fontSize: 'var(--fs-small)',
-              color: 'var(--color-ink-primary)',
-              padding: '0.6rem 0',
-              cursor: 'pointer',
-            }}
-          >
-            03. Contact
-          </button>
+        <div 
+          style={{
+            backgroundColor: 'var(--color-bg-paper)',
+            borderBottom: '1px solid var(--color-border-dark)',
+            padding: '1.5rem',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '1.25rem',
+          }}
+          className="mobile-menu-drawer"
+        >
+          <div style={{
+            fontFamily: 'var(--font-mono)',
+            fontSize: '0.675rem',
+            color: 'var(--color-ink-muted)',
+            textTransform: 'uppercase',
+            letterSpacing: '0.08em',
+            borderBottom: '1px solid var(--color-border)',
+            paddingBottom: '0.4rem',
+          }}>
+            Navigation
+          </div>
+
+          <nav style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+            <button
+              onClick={() => handleNavClick('work')}
+              style={{
+                background: 'none',
+                border: 'none',
+                textAlign: 'left',
+                fontFamily: 'var(--font-serif)',
+                fontSize: '1.35rem',
+                color: 'var(--color-ink-primary)',
+                cursor: 'pointer',
+                padding: '0.4rem 0',
+                minHeight: '44px',
+                display: 'flex',
+                alignItems: 'center',
+              }}
+            >
+              Selected Work
+            </button>
+            <button
+              onClick={() => handleNavClick('about')}
+              style={{
+                background: 'none',
+                border: 'none',
+                textAlign: 'left',
+                fontFamily: 'var(--font-serif)',
+                fontSize: '1.35rem',
+                color: 'var(--color-ink-primary)',
+                cursor: 'pointer',
+                padding: '0.4rem 0',
+                minHeight: '44px',
+                display: 'flex',
+                alignItems: 'center',
+              }}
+            >
+              About Yash Soni
+            </button>
+            <button
+              onClick={() => handleNavClick('contact')}
+              style={{
+                background: 'none',
+                border: 'none',
+                textAlign: 'left',
+                fontFamily: 'var(--font-serif)',
+                fontSize: '1.35rem',
+                color: 'var(--color-ink-primary)',
+                cursor: 'pointer',
+                padding: '0.4rem 0',
+                minHeight: '44px',
+                display: 'flex',
+                alignItems: 'center',
+              }}
+            >
+              Contact &amp; Connect
+            </button>
+          </nav>
+
+          {/* Inline thinking toggle inside mobile drawer */}
+          <div style={{
+            borderTop: '1px solid var(--color-border)',
+            paddingTop: '1rem',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+          }}>
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <span style={{ fontFamily: 'var(--font-sans)', fontSize: '0.9rem', fontWeight: 600, color: 'var(--color-ink-primary)' }}>
+                Show my thinking
+              </span>
+              <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.675rem', color: 'var(--color-ink-muted)' }}>
+                Process notes &amp; trade-offs
+              </span>
+            </div>
+
+            <button
+              onClick={onToggleThinking}
+              role="switch"
+              aria-checked={isThinkingMode}
+              style={{
+                padding: '0.4rem 0.85rem',
+                minHeight: '44px',
+                backgroundColor: isThinkingMode ? 'var(--color-accent)' : 'var(--color-bg)',
+                color: isThinkingMode ? '#FFFFFF' : 'var(--color-ink-primary)',
+                border: `1px solid ${isThinkingMode ? 'var(--color-accent)' : 'var(--color-border)'}`,
+                borderRadius: 'var(--radius-subtle)',
+                fontFamily: 'var(--font-mono)',
+                fontSize: '0.75rem',
+                cursor: 'pointer',
+              }}
+            >
+              {isThinkingMode ? 'ON' : 'OFF'}
+            </button>
+          </div>
         </div>
       )}
 
-      {/* Responsive Styles */}
       <style>{`
-        @media (max-width: 820px) {
+        @media (max-width: 860px) {
           .desktop-nav {
             display: none !important;
           }
-          .mobile-toggle {
+          .mobile-toggle-group {
             display: flex !important;
           }
         }
